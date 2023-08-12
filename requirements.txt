@@ -17,7 +17,7 @@ openpyxl==3.1.2
 packaging==23.1
 Pillow==9.5.0
 psycopg2==2.9.6
-pymongo==4.4.1
+pymongo==3.12.3
 pyrsistent==0.19.3
 pytz==2023.3
 PyYAML==6.0
