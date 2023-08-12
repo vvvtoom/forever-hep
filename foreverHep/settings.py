@@ -93,9 +93,27 @@ WSGI_APPLICATION = "foreverHep.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'LOGGING': {
+            'version': 1,
+            'loggers': {
+                'djongo': {
+                    'level': 'DEBUG',
+                    'propogate': False,                        
+                }
+            },
+        },
+        'NAME': 'postgresql',
+        'CLIENT': {
+            'host': '127.0.0.1',
+            'port': 27017,
+            'username': 'root',
+            'password': "postgres",
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'
+        }
     }
 }
 
