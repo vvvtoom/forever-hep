@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>요건 몰랐지 명호야</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @font-face {
+                font-family: 'NanumSquareNeo-Variable';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+            }
+            
+            @font-face {
+                font-family: 'Binggrae';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            .contents {
+                background-attachment: fixed;
+            }
+            
+            .page_title {
+                font-family: 'NanumSquareNeo-Variable';
+            
+                display: flex;
+                justify-content: center;
+                
+                padding-top: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .page_title > h1 {
+                text-align: center;
+            }
+            
+            .messages {
+                max-width: 60rem;
+                margin: 0 auto;
+                
+                display: flex;
+                flex-flow: column wrap;
+            }
+            
+            .messages > .name {
+                margin-top: 3rem;
+                margin-bottom: 0.5rem;
+            
+                font-family: 'NanumSquareNeo-Variable';
+                color:rgb(103, 103, 103);
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            
+            .messages > .name.left {
+                margin-left: 0.7rem;
+            }
+            
+            .messages > .name.right {
+                text-align: right;
+                margin-right: 0.7rem;
+            }
+            
+            .messages > .bubble {
+                border-radius: 1em;
+                padding: 1em 1.5em;
+                margin: 0.15rem;
+                max-width: 55%;
+            
+                font-family: 'Binggrae';
+                font-weight: 200;
+                font-size: 0.3em;
+            }
+            
+            @media (min-width: 25em) {
+                .messages > .bubble{
+                    font-size: 0.5em;
+                }
+            }
+            
+            @media (min-width: 45em) {
+                .messages > .bubble{
+                    font-size: 0.6em;
+                }
+            }
+            
+            @media (min-width: 60em) {
+                .messages > .bubble{
+                    font-size: 0.75em;
+                }
+            }
+            
+            
+            .messages > .bubble h1 {
+                margin: 0;
+            }
+            
+            .messages > .bubble:last-child {
+                margin-bottom: 5rem;
+            }
+            
+            .messages > .bubble.left {
+                align-self: flex-start;
+                background-color: cornflowerblue;
+                color: #fff;
+            }
+            .messages > .bubble.right {
+                align-self: flex-end;
+                background: linear-gradient(to right, rgb(242, 201, 212) 0%, rgba(242,201,224,1) 32%, rgba(216,174,212,0.7) 100%);
+            }
+            
+            .messages > .bubble.left.first { border-bottom-left-radius: 0.1em; }
+            .messages > .bubble.left.last { border-top-left-radius: 0.1em; }
+            .messages > .bubble.left.middle {
+                border-bottom-left-radius: 0.1em;
+                border-top-left-radius: 0.1em;
+            }
+            
+            .messages > .bubble.right.first { border-bottom-right-radius: 0.1em; }
+            .messages > .bubble.right.last { border-top-right-radius: 0.1em; }
+            .messages > .bubble.right.middle {
+                border-bottom-right-radius: 0.1em;
+                border-top-right-radius: 0.1em;
+            }
+        </style>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="contents">
+            <div class="flex-container">
+                <div class="flex-body">
+                    <div class="page_title">
+                        <h1>요건 몰랐지 명호야</h1>
+                    </div>
+                    <div class="messages">
+                        {% for message in message_list %}
+                            {% if forloop.counter0|divisibleby:2 %}
+                                <div class="name left">
+                                    {{ message.message_writer }}
+                                </div>
+                                <div class="bubble left">
+                                    <h1>{{ message.message_content }}</h1>
+                                </div>
+                            {% else %}
+                                <div class="name right">
+                                    {{ message.message_writer }}
+                                </div>
+                                <div class="bubble right">
+                                    <h1>{{ message.message_content }}</h1>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        ScrollReveal().reveal('.bubble', {
+            delay: 500,
+            useDelay: 'onload',
+            reset: true,
+        })
+
+        ScrollReveal().reveal('.name', {
+            delay: 500,
+            useDelay: 'onload',
+            reset: true,
+        })
+
+    </script>
+</html>
