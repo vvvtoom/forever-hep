@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Message
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def index(request):
@@ -7,7 +8,7 @@ def index(request):
 
     return render(request, 'message/index.html', {'message_list': message_list})
 
-
+@csrf_exempt
 def message_input(request):
     if request.method == 'POST':
         message_writer = request.POST['message_writer']
