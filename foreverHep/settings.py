@@ -94,26 +94,12 @@ WSGI_APPLICATION = "foreverHep.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': True,
-        'LOGGING': {
-            'version': 1,
-            'loggers': {
-                'djongo': {
-                    'level': 'DEBUG',
-                    'propogate': False,                        
-                }
-            },
-        },
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgresql',
-        'CLIENT': {
-            'host': '127.0.0.1',
-            'port': 27017,
-            'username': 'root',
-            'password': "postgres",
-            'authSource': 'admin',
-            'authMechanism': 'SCRAM-SHA-1'
-        }
+        'USER': 'root',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
