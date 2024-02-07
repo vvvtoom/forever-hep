@@ -16,7 +16,7 @@
             
             const adminMoneyBoard = document.querySelector('.admin-money-board');
             adminMoneyBoard.innerHTML = '';
-            data.forEach(player => {
+            data.players.forEach(player => {
                 const playerDiv = document.createElement('div');
                 playerDiv.classList.add('player');
                 playerDiv.innerHTML = `

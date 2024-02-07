@@ -39,9 +39,9 @@ def api_init_game(request):
         try:
             Player.objects.all().delete()
             # return JSON response
-            return JsonResponse({'result': '게임 초기화에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '게임 초기화에 성공했습니다.', 'success': True }, status=200)
         except:
-            return JsonResponse({'result': '게임 초기화에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '게임 초기화에 실패했습니다.', 'success': False }, status=500)
 
 @csrf_exempt
 def api_add_player(request):
@@ -54,9 +54,9 @@ def api_add_player(request):
             player = Player(name=player_name, color_code=color_code)
             player.save()
             
-            return JsonResponse({'result': '플레이어 추가에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '플레이어 추가에 성공했습니다.', 'success': True }, status=200)
         except:
-            return JsonResponse({'result': '플레이어 추가에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '플레이어 추가에 실패했습니다.', 'success': False }, status=500)
         
 
 @csrf_exempt
@@ -92,9 +92,9 @@ def api_send_money(request):
             from_player.save()
             to_player.save()
             
-            return JsonResponse({'result': '점수 전송에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '점수 전송에 성공했습니다.', 'success': True }, status=200)
         except:
-            return JsonResponse({'result': '점수 전송에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '점수 전송에 실패했습니다.', 'success': False }, status=500)
     
 @csrf_exempt
 def api_plus_money(request, player_name, money):
@@ -105,9 +105,9 @@ def api_plus_money(request, player_name, money):
             player.money += int(money)
             player.save()
             
-            return JsonResponse({'result': '점수 추가에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '점수 추가에 성공했습니다.', 'success': True}, status=200)
         except:
-            return JsonResponse({'result': '점수 추가에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '점수 추가에 실패했습니다.', 'success': False }, status=500)
         
 
 @csrf_exempt
@@ -119,9 +119,9 @@ def api_minus_money(request, player_name, money):
             player.money -= int(money)
             player.save()
             
-            return JsonResponse({'result': '점수 감소에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '점수 감소에 성공했습니다.', 'success': True}, status=200)
         except:
-            return JsonResponse({'result': '점수 감소에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '점수 감소에 실패했습니다.', 'success': False }, status=500)
     
 
 @csrf_exempt
@@ -133,6 +133,6 @@ def api_edit_money(request, player_name, money):
             player.money = int(money)
             player.save()
             
-            return JsonResponse({'result': '점수 수정에 성공했습니다.'}, status=200)
+            return JsonResponse({'result': '점수 수정에 성공했습니다.', 'success': True }, status=200)
         except:
-            return JsonResponse({'result': '점수 수정에 실패했습니다.'}, status=500)
+            return JsonResponse({'result': '점수 수정에 실패했습니다.', 'success': False }, status=500)
