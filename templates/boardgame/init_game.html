@@ -1,0 +1,21 @@
+{% extends 'boardgame/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <button id="initialize">초기화</button>
+
+    </div>
+    <script>
+        const initialize = document.getElementById('initialize');
+
+        initialize.addEventListener('click', () => {
+            fetch('../api_init_game', {
+                method: 'POST',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.result);
+                });
+        });
+    </script>
+{% endblock %}

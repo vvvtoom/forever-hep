@@ -67,7 +67,7 @@
                     })
                         .then(response => response.json())
                         .then(data => {
-                            if (data.status === 200) {
+                            if (response.status === 200) {
                                 alert(`${otherPlayerName}에게 ${money}원을 보냈습니다.`);
                             } else {
                                 alert('보내기에 실패했습니다.');
