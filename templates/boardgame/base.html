@@ -100,15 +100,18 @@
             }
 
             .player-money-board__title {
-                font-size: 1.2em;
+                width: 100%;
+                font-size: 3em;
                 font-weight: bold;
                 margin: 10px 0;
+                padding: 1.5em;
                 text-align: center;
             }
 
             .player-money-board__money {
                 text-align: center;
                 margin: 10px 0;
+                font-size: 2em; 
             }
 
             .player-money-board__other-players {
@@ -122,8 +125,9 @@
             .player-money-board__other-players__player {
                 flex: 1;
                 text-align: center;
+                font-size: 1.5em;
                 margin: 10px;
-                padding: 0.5em;
+                padding: 0.75em;
             }
 
             #initialize {
@@ -146,14 +150,14 @@
                 width: 90%;
                 margin: 10px 0;
                 display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
+                flex-wrap: wrap;
             }
 
             .admin-money-board div {
                 width: 45%;
                 text-align: center;
+                display: flex;
+                flex-direction: column;
                 margin: 2em;
                 padding: 1em;
                 border: 1px solid #ddd;
