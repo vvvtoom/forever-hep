@@ -69,7 +69,7 @@
                 font-size: 1.2em;
             }
 
-            .player-form input[type="submit"] {
+            .player-form button {
                 margin: 10px 0;
                 border: none;
                 border-radius: 5px;
@@ -77,6 +77,42 @@
                 color: #fff;
                 font-size: 1.2em;
                 cursor: pointer;
+            }
+
+            .player-money-board {
+                width: 90%;
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .player-money-board__title {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+
+            .player-money-board__money {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .player-money-board__other-players {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .player-money-board__other-players__player {
+                flex: 1;
+                text-align: center;
+                margin: 10px;
             }
         </style>
     </head>
