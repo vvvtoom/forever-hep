@@ -54,7 +54,7 @@
                 const otherPlayerName = e.target.textContent;
                 const money = prompt(`${otherPlayerName}조에 보낼 금액을 입력하세요.`);
                 if (money) {
-                    fetch('../api_send_money/', {
+                    fetch('../../api_send_money/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
