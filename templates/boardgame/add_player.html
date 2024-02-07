@@ -3,13 +3,11 @@
 {% block content %}
     <div class="container">
         <h3 class="mini-title">게임 참여</h3>
-        <form>
-            <div class="form-group player-form">
-                <label for="player_name">조 이름</label>
-                <input type="text" class="form-control" id="player_name" name="player_name" placeholder="조 이름을 입력하세요">
-                <label for="player_color">조 색상</label>
-                <input type="color" class="form-control" id="player_color" name="player_color">
-            </div>
+        <form class="player-form">
+            <label for="player_name">조 이름</label>
+            <input type="text" class="form-control" id="player_name" name="player_name" placeholder="조 이름을 입력하세요">
+            <label for="player_color">조 색상</label>
+            <input type="color" class="form-control" id="player_color" name="player_color">
             <button id="submit" type="submit" class="btn btn-primary">참여</button>
         </form>
     </div>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Player
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -46,8 +47,9 @@ def api_add_player(request):
     if request.method == 'POST':
         # add player
         try:
-            player_name = request.POST['player_name']
-            color_code = request.POST['color_code']
+            data = json.loads(request.body)
+            player_name = data['player_name']
+            color_code = data['color_code']
             player = Player(name=player_name, color_code=color_code)
             player.save()
             
@@ -66,7 +68,7 @@ def api_get_players(request):
         return JsonResponse({'players': player_list}, status=200)
 
 @csrf_exempt
-def api_send_money(request, from_player, to_player, money):
+def api_send_money(request):
     if request.method == 'POST':
         # send money
         try:
