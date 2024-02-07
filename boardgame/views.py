@@ -57,6 +57,14 @@ def api_add_player(request):
             return JsonResponse({'result': '플레이어 추가에 성공했습니다.'}, status=200)
         except:
             return JsonResponse({'result': '플레이어 추가에 실패했습니다.'}, status=500)
+        
+
+@csrf_exempt
+def api_get_my_money(request, player_name):
+    if request.method == 'GET':
+        # get my money
+        player = Player.objects.get(name=player_name)
+        return JsonResponse({'money': player.money}, status=200)
     
 @csrf_exempt
 def api_get_players(request):
