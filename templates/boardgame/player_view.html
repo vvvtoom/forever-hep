@@ -12,7 +12,7 @@
     </div>
     <script>
         const getMyMoney = () => {
-            fetch('../../api_get_my_money/{{ player_name }}', {
+            fetch('../../api_get_my_money/{{ player_name }}/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,14 +37,14 @@
         })
             .then(response => response.json())
             .then(data => {
-                const otherPlayers = data.filter(player => player.name !== '{{ player_name }}');
-                const otherPlayersDiv = document.querySelector('.player-money-board__other-players');
+                const otherPlayers = data.players.filter(player => player !== '{{ player_name }}');
+                const otherPlayersElement = document.querySelector('.player-money-board__other-players');
                 otherPlayers.forEach(player => {
-                    const playerDiv = document.createElement('a');
-                    playerDiv.classList.add('player-money-board__other-players__player');
-                    playerDiv.style.backgroundColor = player.color_code;
-                    playerDiv.textContent = player.name;
-                    otherPlayersDiv.appendChild(playerDiv);
+                    const playerElement = document.createElement('div');
+                    playerElement.classList.add('player-money-board__other-players__player');
+                    playerElement.style.backgroundColor = player.color_code;
+                    playerElement.textContent = player.name;
+                    otherPlayersElement.appendChild(playerElement);
                 });
             });
         

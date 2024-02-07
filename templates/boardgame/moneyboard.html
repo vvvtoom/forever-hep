@@ -1,0 +1,34 @@
+{% extends 'boardgame/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="admin-money-title">점수판</h1>
+        <div class="admin-money-board">
+
+        </div>
+    </div>
+    <script>
+        windows.onload = getPlayers();
+
+        const getPlayers = async () => {
+            const response = await fetch('../../api_get_players/', {
+                method: 'GET'
+            });
+            const data = await response.json();
+            
+            const adminMoneyBoard = document.querySelector('.admin-money-board');
+            adminMoneyBoard.innerHTML = '';
+            data.forEach(player => {
+                const playerDiv = document.createElement('div');
+                playerDiv.classList.add('player');
+                playerDiv.innerHTML = `
+                    <div style="background-color: ${player.color_code}">${player.name}</div>
+                    <p>${player.money}원</p>
+                `;
+                adminMoneyBoard.appendChild(playerDiv);
+            });
+        }
+
+        setInterval(getPlayers, 1000);
+    </script>
+{% endblock %}
