@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="w-full h-full flex flex-column justify-center items-center">
+        <h3 class="text-lg my-15">게임 참여</h3>
+        <form>
+            <div class="form-group flex flex-column justify-center items-center">
+                <label for="player_name">조 이름</label>
+                <input type="text" class="form-control" id="player_name" name="player_name" placeholder="조 이름을 입력하세요">
+                <label for="player_color">조 색상</label>
+                <input type="color" class="form-control" id="player_color" name="player_color">
+            </div>
+            <button id="submit" type="submit" class="btn btn-primary">참여</button>
+        </form>
+    </div>
+    <script>
+        const submit_btn = document.getElementById('submit');
+
+        submit_btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const player_name = document.getElementById('player_name').value;
+            const player_color = document.getElementById('player_color').value;
+
+            if (player_name === '') {
+                alert('조 이름을 입력하세요');
+                return;
+            }
+
+            fetch('../api_add_player', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    player_name: player_name,
+                    color_code: player_color
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 200) {
+                        alert(data.result);
+                        window.location.href = '../player_view/' + player_name;
+                    } else {
+                        alert(data.result);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        });
+    </script>
+{% endblock %}

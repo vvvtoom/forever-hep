@@ -38,6 +38,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     "message",
+    "boardgame",
     'corsheaders',
     "django.contrib.admin",
     "django.contrib.auth",
