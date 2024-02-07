@@ -38,7 +38,9 @@
                 .then(data => {
                     if (data.status === 200) {
                         alert(data.result);
-                        window.location.href = '../player_view/' + player_name;
+                        
+                        // 게임 참여 성공 시 게임 화면으로 이동
+                        location.href = '../player_view/' + player_name;
                     } else {
                         alert(data.result);
                     }

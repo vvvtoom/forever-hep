@@ -27,7 +27,8 @@ def add_player(request):
 
 
 def player_view(request, player_name):
-    return render(request, 'boardgame/player_view.html', {'player_name': player_name})
+    player = Player.objects.get(name=player_name)
+    return render(request, 'boardgame/player_view.html', {'player_name': player_name, 'player_money': player.money, 'player_color_code': player.color_code})
 
 
 # api views
@@ -72,8 +73,12 @@ def api_send_money(request):
     if request.method == 'POST':
         # send money
         try:
-            from_player = Player.objects.get(name=from_player)
-            to_player = Player.objects.get(name=to_player)
+            data = json.loads(request.body)
+            from_player_name = data['from_player_name']
+            to_player_name = data['to_player_name']
+            money = data['money']
+            from_player = Player.objects.get(name=from_player_name)
+            to_player = Player.objects.get(name=to_player_name)
             from_player.money -= int(money)
             to_player.money += int(money)
             from_player.save()
