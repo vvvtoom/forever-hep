@@ -8,8 +8,6 @@
         </div>
     </div>
     <script>
-        windows.onload = getPlayers();
-
         const getPlayers = async () => {
             const response = await fetch('../../api_get_players/', {
                 method: 'GET'
@@ -27,6 +25,10 @@
                 `;
                 adminMoneyBoard.appendChild(playerDiv);
             });
+        }
+
+        onload = () => {
+            getPlayers();
         }
 
         setInterval(getPlayers, 1000);
