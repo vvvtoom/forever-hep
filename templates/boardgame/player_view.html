@@ -68,7 +68,7 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert(`${otherPlayerName}에게 ${money}원을 보냈습니다.`);
+                                alert(`${otherPlayerName}조에 ${money}원을 보냈습니다.`);
                                 getMyMoney();
                             } else {
                                 alert('보내기에 실패했습니다.');

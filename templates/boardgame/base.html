@@ -39,7 +39,6 @@
             .container {
                 width: 100%;
                 max-width: 1500px;
-                margin-top: 3em;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -103,15 +102,15 @@
                 width: 100%;
                 font-size: 3em;
                 font-weight: bold;
-                margin: 10px 0;
-                padding: 1.5em;
+                margin-bottom: 10px;
+                padding: 1em;
                 text-align: center;
             }
 
             .player-money-board__money {
                 text-align: center;
-                margin: 10px 0;
-                font-size: 2em; 
+                padding: 0.5em;
+                font-size: 2.5em;
             }
 
             .player-money-board__other-players {
@@ -125,19 +124,29 @@
             .player-money-board__other-players__player {
                 flex: 1;
                 text-align: center;
-                font-size: 1.5em;
+                font-size: 2em;
                 margin: 10px;
-                padding: 0.75em;
+                padding: 1em;
             }
 
             #initialize {
                 margin: 10px 0;
+                padding: 2em;
                 border: none;
                 border-radius: 5px;
                 background-color: #333;
                 color: #fff;
                 font-size: 2em;
                 cursor: pointer;
+            }
+
+            .board-container {
+                width: 100%;
+                margin-top: 3em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
 
             .admin-money-title {
@@ -153,7 +162,7 @@
                 flex-wrap: wrap;
             }
 
-            .admin-money-board div {
+            .admin-money-board .player {
                 width: 45%;
                 text-align: center;
                 display: flex;
@@ -164,16 +173,44 @@
                 border-radius: 5px;
             }
 
-            .admin-money-board div div {
+            .admin-money-board .player-title {
                 font-size: 2em;
                 font-weight: bold;
                 margin: 0.5em 0;
             }
 
-            .admin-money-board div p {
-                font-size: 1.5em;
+            .admin-money-board .player-title p {
+                font-size: 1.8em;
                 margin: 0.5em 0;
             }
+
+            .admin-money-board .player-money-control-form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .admin-money-board .player-money-control-buttons {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .admin-money-board .player-money-control-buttons button {
+                margin: 0 0.5em;
+                padding: 0.5em;
+                border: none;
+                border-radius: 5px;
+                background-color: #333;
+                color: #fff;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+
+
+
         </style>
     </head>
     <body>

@@ -14,10 +14,6 @@ def init_game(request):
     return render(request, 'boardgame/init_game.html')
 
 
-def edit_player_money(request):
-    return render(request, 'boardgame/edit_player_money.html')
-
-
 def moneyboard(request):
     return render(request, 'boardgame/moneyboard.html')
 
@@ -97,42 +93,36 @@ def api_send_money(request):
             return JsonResponse({'result': '점수 전송에 실패했습니다.', 'success': False }, status=500)
     
 @csrf_exempt
-def api_plus_money(request, player_name, money):
+def api_add_money(request):
     if request.method == 'POST':
         # plus money
         try:
+            data = json.loads(request.body)
+            player_name = data['player_name']
+            money = data['money']
+
             player = Player.objects.get(name=player_name)
             player.money += int(money)
             player.save()
             
-            return JsonResponse({'result': '점수 추가에 성공했습니다.', 'success': True}, status=200)
+            return JsonResponse({'result': '해당 조 점수가 추가되었습니다.', 'success': True}, status=200)
         except:
-            return JsonResponse({'result': '점수 추가에 실패했습니다.', 'success': False }, status=500)
+            return JsonResponse({'result': '오류가 발생했습니다.', 'success': False }, status=500)
         
 
 @csrf_exempt
-def api_minus_money(request, player_name, money):
+def api_sub_money(request):
     if request.method == 'POST':
         # minus money
         try:
+            data = json.loads(request.body)
+            player_name = data['player_name']
+            money = data['money']
+
             player = Player.objects.get(name=player_name)
             player.money -= int(money)
             player.save()
             
-            return JsonResponse({'result': '점수 감소에 성공했습니다.', 'success': True}, status=200)
+            return JsonResponse({'result': '해당 조 점수가 감소되었습니다.', 'success': True}, status=200)
         except:
-            return JsonResponse({'result': '점수 감소에 실패했습니다.', 'success': False }, status=500)
-    
-
-@csrf_exempt
-def api_edit_money(request, player_name, money):
-    if request.method == 'POST':
-        # edit money
-        try:
-            player = Player.objects.get(name=player_name)
-            player.money = int(money)
-            player.save()
-            
-            return JsonResponse({'result': '점수 수정에 성공했습니다.', 'success': True }, status=200)
-        except:
-            return JsonResponse({'result': '점수 수정에 실패했습니다.', 'success': False }, status=500)
+            return JsonResponse({'result': '오류가 발생했습니다.', 'success': False }, status=500)
