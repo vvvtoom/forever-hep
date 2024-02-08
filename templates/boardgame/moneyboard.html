@@ -12,6 +12,7 @@
             const response = await fetch('../api_get_players/', {
                 method: 'GET'
             });
+
             const data = await response.json();
             
             const adminMoneyBoard = document.querySelector('.admin-money-board');
@@ -20,10 +21,31 @@
                 const playerDiv = document.createElement('div');
                 playerDiv.classList.add('player');
                 playerDiv.innerHTML = `
-                    <div style="background-color: ${player.color_code}">${player.name}</div>
-                    <p>${player.money}원</p>
+                    <div class="player-title" style="background-color: ${player.color_code}">${player.name}</div>
+                    <p class="player-money_${player.name}">${player.money}원</p>
+                    <div class="player-money-control-form">
+                        <input type="number" class="player-money-control-input" value="0">
+                        <div class="player-money-control-buttons">
+                            <button class="player-money-control-button" onclick="addMoney(${player.name})">+</button>
+                            <button class="player-money-control-button" onclick="subMoney(${player.name})">-</button>
+                        </div>
+                    </div>
                 `;
                 adminMoneyBoard.appendChild(playerDiv);
+            });
+        }
+
+        const getPlayersMoney = async () => {
+            const response = await fetch('../api_get_players_money/', {
+                method: 'GET'
+            }).then(response => {
+                response.json();
+            }).then(data => {
+                // set player money value of p tag with class player-money_{player_name}
+                data.players.forEach(player => {
+                    const playerMoney = document.querySelector(`.player-money_${player.name}`);
+                    playerMoney.innerHTML = `${player.money}원`;
+                });
             });
         }
 
@@ -31,6 +53,6 @@
             getPlayers();
         }
 
-        setInterval(getPlayers, 1000);
+        setInterval(getPlayersMoney, 1000);
     </script>
 {% endblock %}
