@@ -48,7 +48,7 @@
         }
 
         const addMoney = async (name) => {
-            const input = document.querySelector('.player-money-control-input_${name}');
+            const input = document.querySelector('.player-money-control-input_' + name);
             const response = await fetch('../api_add_money/', {
                 method: 'POST',
                 headers: {
@@ -65,7 +65,7 @@
         }
 
         const subMoney = async (name) => {
-            const input = document.querySelector('.player-money-control-input_${name}');
+            const input = document.querySelector('.player-money-control-input_' + name);
             const response = await fetch('../api_sub_money/', {
                 method: 'POST',
                 headers: {

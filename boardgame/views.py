@@ -36,11 +36,11 @@ def api_init_game(request):
             Player.objects.all().delete()
 
             # add players with name '1조', '2조', '3조', '4조', '회계실'
-            player1 = Player(name='1조', money=1000, color_code='#FF0000')
-            player2 = Player(name='2조', money=1000, color_code='#00FF00')
-            player3 = Player(name='3조', money=1000, color_code='#0000FF')
-            player4 = Player(name='4조', money=1000, color_code='#FFFF00')
-            player5 = Player(name='회계실', color_code='#000000')
+            player1 = Player(name='1조', money=1000, color_code='#F5897A')
+            player2 = Player(name='2조', money=1000, color_code='#B1A6F5')
+            player3 = Player(name='3조', money=1000, color_code='#7AF5B9')
+            player4 = Player(name='4조', money=1000, color_code='#A39E65')
+            player5 = Player(name='회계실', color_code='#F5EA7A')
 
             player1.save()
             player2.save()
