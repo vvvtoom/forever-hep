@@ -15,6 +15,6 @@ urlpatterns = [
     path("api_get_players/", views.api_get_players, name='api_get_players'),
     path("api_get_my_money/<str:player_name>/", views.api_get_my_money, name='api_get_my_money'),
     path("api_send_money/", views.api_send_money, name='api_send_money'),
-    path("api_add_money/", views.api_plus_money, name='api_plus_money'),
-    path("api_sub_money/", views.api_minus_money, name='api_minus_money'),
+    path("api_add_money/", views.api_add_money, name='api_add_money'),
+    path("api_sub_money/", views.api_sub_money, name='api_sub_money'),
 ]
