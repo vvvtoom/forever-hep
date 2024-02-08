@@ -52,7 +52,7 @@
         document.querySelector('.player-money-board__other-players').addEventListener('click', (e) => {
             if (e.target.classList.contains('player-money-board__other-players__player')) {
                 const otherPlayerName = e.target.textContent;
-                const money = prompt(`${otherPlayerName}조에 보낼 금액을 입력하세요.`);
+                const money = prompt(`${otherPlayerName}에 보낼 금액을 입력하세요.`);
                 if (money) {
                     fetch('../../api_send_money/', {
                         method: 'POST',
@@ -68,7 +68,7 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert(`${otherPlayerName}조에 ${money}원을 보냈습니다.`);
+                                alert(`${otherPlayerName}에 ${money}달란트를 보냈습니다.`);
                                 getMyMoney();
                             } else {
                                 alert('보내기에 실패했습니다.');

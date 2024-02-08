@@ -22,7 +22,7 @@
                 playerDiv.classList.add('player');
                 playerDiv.innerHTML = `
                     <div class="player-title" style="background-color: ${player.color_code}">${player.name}</div>
-                    <p class="player-money_${player.name}">${player.money}원</p>
+                    <p class="player-money_${player.name}">${player.money}달란트</p>
                 `;
                 adminMoneyBoard.appendChild(playerDiv);
             });
@@ -37,7 +37,7 @@
 
             data.players.forEach(player => {
                 const playerMoney = document.querySelector(`.player-money_${player.name}`);
-                playerMoney.innerHTML = `${player.money}원`;
+                playerMoney.innerHTML = `${player.money}달란트`;
             });
         }
 

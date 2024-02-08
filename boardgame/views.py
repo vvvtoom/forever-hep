@@ -34,26 +34,24 @@ def api_init_game(request):
         # delete all players
         try:
             Player.objects.all().delete()
+
+            # add players with name '1조', '2조', '3조', '4조', '회계실'
+            player1 = Player(name='1조', money=1000, color_code='#FF0000')
+            player2 = Player(name='2조', money=1000, color_code='#00FF00')
+            player3 = Player(name='3조', money=1000, color_code='#0000FF')
+            player4 = Player(name='4조', money=1000, color_code='#FFFF00')
+            player5 = Player(name='회계실', color_code='#000000')
+
+            player1.save()
+            player2.save()
+            player3.save()
+            player4.save()
+            player5.save()
+
             # return JSON response
             return JsonResponse({'result': '게임 초기화에 성공했습니다.', 'success': True }, status=200)
         except:
             return JsonResponse({'result': '게임 초기화에 실패했습니다.', 'success': False }, status=500)
-
-@csrf_exempt
-def api_add_player(request):
-    if request.method == 'POST':
-        # add player
-        try:
-            data = json.loads(request.body)
-            player_name = data['player_name']
-            color_code = data['color_code']
-            player = Player(name=player_name, color_code=color_code)
-            player.save()
-            
-            return JsonResponse({'result': '플레이어 추가에 성공했습니다.', 'success': True }, status=200)
-        except:
-            return JsonResponse({'result': '플레이어 추가에 실패했습니다.', 'success': False }, status=500)
-        
 
 @csrf_exempt
 def api_get_my_money(request, player_name):
@@ -66,7 +64,7 @@ def api_get_my_money(request, player_name):
 def api_get_players(request):
     if request.method == 'GET':
         # get players
-        players = Player.objects.all()
+        players = Player.objects.all().order_by('name')
         player_list = []
         for player in players:
             player_list.append({'name': player.name, 'money': player.money, 'color_code': player.color_code})

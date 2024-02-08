@@ -21,9 +21,9 @@
                 playerDiv.classList.add('player');
                 playerDiv.innerHTML = `
                     <div class="player-title" style="background-color: ${player.color_code}">${player.name}</div>
-                    <p class="player-money_${player.name}">${player.money}원</p>
+                    <p class="player-money_${player.name}">${player.money}달란트</p>
                     <div class="player-money-control-form">
-                        <input type="number" class="player-money-control-input" value="0">
+                        <input type="number" class="player-money-control-input_${player.name}" value="0">
                         <div class="player-money-control-buttons">
                             <button class="player-money-control-button" onclick="addMoney(\'${player.name}\')">+</button>
                             <button class="player-money-control-button" onclick="subMoney(\'${player.name}\')">-</button>
@@ -43,12 +43,12 @@
 
             data.players.forEach(player => {
                 const playerMoney = document.querySelector(`.player-money_${player.name}`);
-                playerMoney.innerHTML = `${player.money}원`;
+                playerMoney.innerHTML = `${player.money}달란트`;
             });
         }
 
         const addMoney = async (name) => {
-            const input = document.querySelector('.player-money-control-input');
+            const input = document.querySelector('.player-money-control-input_${name}');
             const response = await fetch('../api_add_money/', {
                 method: 'POST',
                 headers: {
@@ -65,7 +65,7 @@
         }
 
         const subMoney = async (name) => {
-            const input = document.querySelector('.player-money-control-input');
+            const input = document.querySelector('.player-money-control-input_${name}');
             const response = await fetch('../api_sub_money/', {
                 method: 'POST',
                 headers: {
