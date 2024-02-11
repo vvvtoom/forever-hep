@@ -40,7 +40,7 @@ def api_init_game(request):
             player2 = Player(name='2조', money=1000, color_code='#F5EA7A')
             player3 = Player(name='3조', money=1000, color_code='#65E573')
             player4 = Player(name='4조', money=1000, color_code='#6584E6')
-            player5 = Player(name='회계실', color_code='#F5EA7A')
+            player5 = Player(name='회계실', color_code='#FF94FF')
 
             player1.save()
             player2.save()
